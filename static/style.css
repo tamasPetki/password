@@ -81,3 +81,9 @@ form {
     justify-content: center;
     align-items: center;
 }
+
+
+#hashed_pw {
+    background-color: #eee;
+    color: #222;
+}

@@ -13,7 +13,7 @@
         <form action="/generate">
             <input type="text" id="pass_input" name="password" placeholder="{% if password is defined %}{{ password }}{% else %}password{% endif %}">
             <button type="submit">HASH IT!</button>
-            <textarea id="hashed_pw" placeholder="{% if hashed_pass is defined %}{{ hashed_pass }}{% else %}hash{% endif %}" disabled></textarea>
+            <textarea readonly id="hashed_pw" placeholder="{% if hashed_pass is not defined %}hash{% endif %}">{% if hashed_pass is defined %}{{ hashed_pass }}{% endif %}</textarea>
         </form>
     </div>
     <div id="right" class="child">
