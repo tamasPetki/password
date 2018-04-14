@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Hashing</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+</head>
+<body style="background-color: {% if background is defined %}{{ background }}{% else %}#1976d2{% endif %}">
+<div id="container" class="parent">
+    <div id="left" class="child">
+        <h1>Hash</h1>
+        <form action="/generate">
+            <input type="text" id="pass_input" name="password" placeholder="{% if password is defined %}{{ password }}{% else %}password{% endif %}">
+            <button type="submit">HASH IT!</button>
+            <textarea id="hashed_pw" placeholder="{% if hashed_pass is defined %}{{ hashed_pass }}{% else %}hash{% endif %}" disabled></textarea>
+        </form>
+    </div>
+    <div id="right" class="child">
+        <div class="items">
+            <h1>Verify</h1>
+            <form action="/verify">
+                <input  id="pass_check_input" name="pass" placeholder="password">
+                <textarea id="hash" name="hash" placeholder="hash"></textarea>
+                <button type="submit">Verify it!</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
